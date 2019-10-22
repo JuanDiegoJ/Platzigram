@@ -1,3 +1,3 @@
 # Platzigram
 
-Primer proyectyo con Django
+Primer proyecto con Django
