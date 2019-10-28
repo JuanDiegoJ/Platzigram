@@ -19,4 +19,4 @@ class Profile(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.username
+        return self.user.username
