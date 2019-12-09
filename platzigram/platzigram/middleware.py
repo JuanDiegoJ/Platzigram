@@ -7,12 +7,15 @@ class ProfileCompletionMiddleware:
         self.get_response = get_response
     #Método que valida que el usuario en dado caso de no tener una foto de perfil no lo
     #deje irse a otra página
+
     def __call__(self, request):
+        """Code to be executed for each request before the view is called."""
         if not request.user.is_anonymous:
-            if request.user.is_staff:
+            if not request.user.is_staff:
                 profile = request.user.profile
                 if not profile.picture or not profile.biography:
                     if request.path not in [reverse('update_profile'), reverse('logout')]:
                         return redirect('update_profile')
+
         response = self.get_response(request)
         return response
